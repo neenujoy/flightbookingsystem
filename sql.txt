@@ -1,0 +1,52 @@
+/**************************************************************INSERT
+CREATE PROCEDURE [dbo].[Proc_Airlines_AddAirlines]
+	@airlineName NVARCHAR(50),
+	@airlineLogo NVARCHAR(1000),
+	@contactNumber NVARCHAR(50),
+	@contactAddress NVARCHAR(1000),
+	@isBlocked BIT
+AS
+BEGIN
+
+	INSERT INTO Airlines (AirlineName, AirlineLogo, ContactNumber, ContactAddress, IsBlocked)
+	VALUES(@airlineName, @airlineLogo, @contactNumber, @contactAddress, @isBlocked)
+
+END
+GO
+
+/*****************************************************************INSERT
+
+/*****************************************************************GET
+CREATE PROCEDURE [dbo].[Proc_Airlines_GetAirlineByName]
+	@airlineName NVARCHAR(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT AirlineId, AirlineName, AirlineLogo, ContactNumber, ContactAddress, IsBlocked
+	FROM Airlines
+	WHERE AirlineName = @airlineName
+
+END
+GO
+/*****************************************************************GET
+
+/*****************************************************************UPDATE
+CREATE PROCEDURE [dbo].[Proc_Airlines_UpdateAirlines]
+	@airlineId INT,
+	@airlineLogo NVARCHAR(1000),
+	@contactNumber NVARCHAR(50),
+	@contactAddress NVARCHAR(1000),
+	@isBlocked BIT
+AS
+BEGIN
+
+	UPDATE Airlines SET AirlineLogo = @airlineLogo, 
+		ContactNumber = @contactNumber, 
+		ContactAddress = @contactAddress, 
+		IsBlocked = @isBlocked
+	WHERE AirlineId = @airlineId
+
+END
+GO
+/*****************************************************************UPDATE
